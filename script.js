@@ -108,14 +108,14 @@ mainContainer.addEventListener('click', function(event){
 
         const jobsName = parenNode.querySelector('.jobsName').innerText;
         const jobsDescription = parenNode.querySelector('.jobsDescription').innerText;
-        const selary = parenNode.querySelector('.selary').innerText;
+        const jobsSalary = parenNode.querySelector('.jobsSalary').innerText;
         const statu = parenNode.querySelector('.statu').innerText;
         const notes = parenNode.querySelector('.notes').innerText;
 
-         const statusModifid = parenNode.querySelector('.statu');
-        statusModifid.innerText = 'INTERVIEW';
-        statusModifid.className = 'statu px-3 py-2 rounded-sm inline-block';
-        statusModifid.classList.add(
+         const statusModified = parenNode.querySelector('.statu');
+        statusModified.innerText = 'INTERVIEW';
+        statusModified.className = 'statu px-3 py-2 rounded-sm inline-block';
+        statusModified.classList.add(
             'text-green-600',
             'bg-green-100',
             'border',
@@ -125,7 +125,7 @@ mainContainer.addEventListener('click', function(event){
         const cardInfo ={
             jobsName,
             jobsDescription,
-            selary,
+            jobsSalary,
             statu:'INTERVIEW',
             notes
         }
@@ -151,14 +151,14 @@ mainContainer.addEventListener('click', function(event){
 
         const jobsName = parenNode.querySelector('.jobsName').innerText;
         const jobsDescription = parenNode.querySelector('.jobsDescription').innerText;
-        const selary = parenNode.querySelector('.selary').innerText;
+        const jobsSalary = parenNode.querySelector('.jobsSalary').innerText;
         const statu = parenNode.querySelector('.statu').innerText;
         const notes = parenNode.querySelector('.notes').innerText;
 
-        const statusModifid = parenNode.querySelector('.statu');
-        statusModifid.innerText = 'REJECTED';
-        statusModifid.className = 'statu px-3 py-2 rounded-sm inline-block';
-        statusModifid.classList.add(
+        const statusModified = parenNode.querySelector('.statu');
+        statusModified.innerText = 'REJECTED';
+        statusModified.className = 'statu px-3 py-2 rounded-sm inline-block';
+        statusModified.classList.add(
             'text-red-600',
             'bg-red-100',
             'border',
@@ -169,7 +169,7 @@ mainContainer.addEventListener('click', function(event){
         const cardInfo ={
             jobsName,
             jobsDescription,
-            selary,
+            jobsSalary,
             statu:'REJECTED',
             notes
         }
@@ -209,4 +209,67 @@ mainContainer.addEventListener('click', function(event){
         calculateCount();        
     }    
 })
+
+function renderInterview (){
+    filterSection.innerHTML = ''
+
+    for(let interview of interviewList ){
+        console.log(interview);
+
+        let div = document.createElement('div');
+        div.className = 'cart mt-4 flex justify-between bg-white py-6 px-6 rounded-xl border border-gray-200'
+        div.innerHTML = `
+        <div class="space-y-6">
+                    <div>
+                        <p class="jobsName text-[#002C5C] text-[18px] font-semibold leading-[26px]">${interview.jobsName}</p>
+                        <p class="jobsDescription text-[#64748B] text-[16px] leading-5">${interview.jobsDescription}</p>
+                    </div>
+                    <div>
+                        <p class="jobsSalary text-[#323B49] text-[14px] leading-5">${interview.jobsSalary}</p>
+                    </div>
+                    <p class="statu text-green-600 bg-green-100 border border-green-600 px-3 py-2 rounded-sm inline-block">${interview.statu}</p>
+                    <p class="notes">${interview.notes}</p>
+                    <div class="flex gap-5">
+                        <button class="cursor-pointer interview-btn border border-green-500 font-semibold text-green-500 px-4 py-2 rounded-sm hover:bg-green-50">INTERVIEW</button>
+                        <button class="cursor-pointer rejected-btn border border-red-500 font-semibold text-red-500 px-4 py-2 rounded-sm hover:bg-red-50">REJECTED</button>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn-delete border border-gray-300 flex items-center justify-center rounded-full w-12 h-12 hover:border-red-300 transition cursor-pointer"><i class="fa-regular fa-trash-can text-lg"></i></button>
+                </div>
+        `
+        filterSection.appendChild(div);
+    }
+}
+function renderRejected (){
+    filterSection.innerHTML = ''
+
+    for(let rejected of rejectedList){
+
+        let div = document.createElement('div');
+        div.className = 'cart mt-4 flex justify-between bg-white py-6 px-6 rounded-xl border border-gray-200'
+        div.innerHTML = `
+        <div class="space-y-6">
+                    <div>
+                        <p class="jobsName text-[#002C5C] text-[18px] font-semibold leading-[26px]">${rejected.jobsName}</p>
+                        <p class="jobsDescription text-[#64748B] text-[16px] leading-5">${rejected.jobsDescription}</p>
+                    </div>
+                    <div>
+                        <p class="jobsSalary text-[#323B49] text-[14px] leading-5">${rejected.jobsSalary}</p>
+                    </div>
+                    <p class="statu text-red-600 bg-red-100 border border-red-600 px-3 py-2 rounded-sm inline-block">${rejected.statu}</p>
+                    <p class="notes">${rejected.notes}</p>
+                    <div class="flex gap-5">
+                        <button class="cursor-pointer interview-btn border border-green-500 font-semibold text-green-500 px-4 py-2 rounded-sm hover:bg-green-50">INTERVIEW</button>
+                        <button class="cursor-pointer rejected-btn border border-red-500 font-semibold text-red-500 px-4 py-2 rounded-sm hover:bg-red-50">REJECTED</button>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn-delete border border-gray-300 flex items-center justify-center rounded-full w-12 h-12 hover:border-red-300 transition cursor-pointer"><i class="fa-regular fa-trash-can text-lg"></i></button>
+                </div>
+        `
+        filterSection.appendChild(div);
+    }
+}
+
 
