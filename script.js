@@ -186,7 +186,7 @@ mainContainer.addEventListener('click', function(event){
         const cart = event.target.closest('.cart');
         const jobsName = cart.querySelector('.jobsName').innerText;
 
-        const isconfirmed = confirm(`Are you sure to remove "${jobsName}" ?`);
+        const isconfirmed = confirm(`Want to remove "${jobsName}" ?`);
 
         if(!isconfirmed){
             return;
